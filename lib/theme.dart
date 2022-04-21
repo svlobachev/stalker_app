@@ -5,8 +5,9 @@ import 'package:flutter/cupertino.dart';
 class CustomTheme {
   const CustomTheme();
 
-  static const Color loginGradientStart = Color(0xff454740);
-  static const Color loginGradientEnd = Color(0xff937a34);
+  // static const Color loginGradientStart = Color(0xff3b3e37);
+  static const Color loginGradientStart = Color(0xffba6f16);
+  static const Color loginGradientEnd = Color(0xff3b3e37);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
 
