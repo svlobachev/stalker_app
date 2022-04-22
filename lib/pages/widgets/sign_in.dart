@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stalker_app/theme.dart';
 import 'package:stalker_app/widgets/snackbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -57,14 +58,16 @@ class _SignInState extends State<SignIn> {
                               fontFamily: 'WorkSansSemiBold',
                               fontSize: 16.0,
                               color: Colors.black),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
                               FontAwesomeIcons.envelope,
                               color: Colors.black,
                               size: 22.0,
                             ),
-                            hintText: 'Email Address',
+                            // hintText: 'Email Address',
+                            hintText: AppLocalizations.of(context)!
+                                .hintTextEmailAddress,
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                           ),
@@ -96,7 +99,9 @@ class _SignInState extends State<SignIn> {
                               size: 22.0,
                               color: Colors.black,
                             ),
-                            hintText: 'Password',
+                            // hintText: 'Password',
+                            hintText:
+                                AppLocalizations.of(context)!.hintTextPassword,
                             hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                             suffixIcon: GestureDetector(
@@ -149,11 +154,12 @@ class _SignInState extends State<SignIn> {
                 child: MaterialButton(
                   highlightColor: Colors.transparent,
                   splashColor: CustomTheme.loginGradientEnd,
-                  child: const Padding(
+                  child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
                     child: Text(
-                      'LOGIN',
+                      // 'LOGIN',
+                      AppLocalizations.of(context)!.buttonTextLogIn,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
@@ -170,8 +176,9 @@ class _SignInState extends State<SignIn> {
             padding: const EdgeInsets.only(top: 10.0),
             child: TextButton(
                 onPressed: () {},
-                child: const Text(
-                  'Forgot Password?',
+                child: Text(
+                  // 'Forgot Password?',
+                  AppLocalizations.of(context)!.textForgotPassword,
                   style: TextStyle(
                       decoration: TextDecoration.underline,
                       color: Colors.white,
@@ -199,10 +206,11 @@ class _SignInState extends State<SignIn> {
                   width: 100.0,
                   height: 1.0,
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 15.0, right: 15.0),
                   child: Text(
-                    'Or',
+                    // 'Or',
+                    AppLocalizations.of(context)!.textOr,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 16.0,

@@ -3,6 +3,7 @@ import 'package:stalker_app/pages/widgets/sign_in.dart';
 import 'package:stalker_app/pages/widgets/sign_up.dart';
 import 'package:stalker_app/theme.dart';
 import 'package:stalker_app/utils/bubble_indicator_painter.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -126,7 +127,8 @@ class _LoginPageState extends State<LoginPage>
                 ),
                 onPressed: _onSignInButtonPress,
                 child: Text(
-                  'Existing',
+                  // 'Existing',
+                  AppLocalizations.of(context)!.existingUser,
                   style: TextStyle(
                       color: left,
                       fontSize: 16.0,
@@ -142,7 +144,8 @@ class _LoginPageState extends State<LoginPage>
                 ),
                 onPressed: _onSignUpButtonPress,
                 child: Text(
-                  'New',
+                  // 'New',
+                  AppLocalizations.of(context)!.newUser,
                   style: TextStyle(
                       color: right,
                       fontSize: 16.0,

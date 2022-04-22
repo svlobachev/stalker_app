@@ -11,13 +11,18 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   font_awesome_flutter:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  provider: ^5.0.0 # state management
+  flutter_lints: ^1.0.4
 
 flutter:
+  generate: true
   uses-material-design: true
 
   assets:

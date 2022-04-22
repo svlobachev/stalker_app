@@ -1,0 +1,15 @@
+{
+  "language": "English",
+  "helloWorld": "Hello World!",
+  "titleAppBar": "Title App Bar",
+  "newUser": "New",
+  "existingUser": "Existing",
+  "hintTextName": "Hero name",
+  "hintTextPassword": "Password",
+  "hintTextConfirmation": "Confirmation",
+  "hintTextEmailAddress": "Email Address",
+  "buttonTextLogIn": "LOGIN",
+  "buttonTextSingUp": "SIGN UP",
+  "textForgotPassword": "Forgot Password?",
+  "textOr": "Or"
+}

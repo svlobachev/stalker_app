@@ -1,0 +1,15 @@
+{
+  "language": "Русский",
+  "helloWorld": "Привет мир!",
+  "titleAppBar": "Заголовок App Bar",
+  "newUser": "Впервые",
+  "existingUser": "Опытный",
+  "hintTextName": "Имя героя",
+  "hintTextPassword": "Пароль",
+  "hintTextConfirmation": "Подтверждение",
+  "hintTextEmailAddress": "Емаил",
+  "buttonTextLogIn": "Вход",
+  "buttonTextSingUp": "Регистрация",
+  "textForgotPassword": "Забыли пароль?",
+  "textOr": "Или"
+}

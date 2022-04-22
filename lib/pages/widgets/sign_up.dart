@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stalker_app/theme.dart';
 import 'package:stalker_app/widgets/snackbar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -67,13 +68,15 @@ class _SignUpState extends State<SignUp> {
                               fontFamily: 'WorkSansSemiBold',
                               fontSize: 16.0,
                               color: Colors.black),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
                               FontAwesomeIcons.user,
                               color: Colors.black,
                             ),
-                            hintText: 'Name',
+                            // hintText: 'Name',
+                            hintText:
+                                AppLocalizations.of(context)!.hintTextName,
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
@@ -99,13 +102,15 @@ class _SignUpState extends State<SignUp> {
                               fontFamily: 'WorkSansSemiBold',
                               fontSize: 16.0,
                               color: Colors.black),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             border: InputBorder.none,
                             icon: Icon(
                               FontAwesomeIcons.envelope,
                               color: Colors.black,
                             ),
-                            hintText: 'Email Address',
+                            // hintText: 'Email Address',
+                            hintText: AppLocalizations.of(context)!
+                                .hintTextEmailAddress,
                             hintStyle: TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
@@ -137,7 +142,9 @@ class _SignUpState extends State<SignUp> {
                               FontAwesomeIcons.lock,
                               color: Colors.black,
                             ),
-                            hintText: 'Password',
+                            // hintText: 'Password',
+                            hintText:
+                                AppLocalizations.of(context)!.hintTextPassword,
                             hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                             suffixIcon: GestureDetector(
@@ -179,7 +186,9 @@ class _SignUpState extends State<SignUp> {
                               FontAwesomeIcons.lock,
                               color: Colors.black,
                             ),
-                            hintText: 'Confirmation',
+                            // hintText: 'Confirmation',
+                            hintText: AppLocalizations.of(context)!
+                                .hintTextConfirmation,
                             hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                             suffixIcon: GestureDetector(
@@ -233,11 +242,12 @@ class _SignUpState extends State<SignUp> {
                   highlightColor: Colors.transparent,
                   splashColor: CustomTheme.loginGradientEnd,
                   //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
-                  child: const Padding(
+                  child: Padding(
                     padding:
                         EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
                     child: Text(
-                      'SIGN UP',
+                      // 'SIGN UP',
+                      AppLocalizations.of(context)!.buttonTextSingUp,
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
