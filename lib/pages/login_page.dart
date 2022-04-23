@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stalker_app/pages/widgets/sign_in.dart';
 import 'package:stalker_app/pages/widgets/sign_up.dart';
-import 'package:stalker_app/theme.dart';
+import 'package:stalker_app/widgets/theme.dart';
 import 'package:stalker_app/utils/bubble_indicator_painter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

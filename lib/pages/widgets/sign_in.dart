@@ -1,9 +1,7 @@
-import 'dart:ffi';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stalker_app/theme.dart';
+import 'package:stalker_app/widgets/theme.dart';
 import 'package:stalker_app/widgets/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -43,8 +41,11 @@ class _SignInState extends State<SignIn> {
       print("Focus: $result");
     }
     if (!validateEmail(emailFieldText) && !result) {
-      CustomSnackBar(context, Text(AppLocalizations.of(context)!.emailValidate),
-          Colors.red, AppLocalizations.of(context)!.labelUndo);
+      CustomSnackBar(
+          context,
+          Text(AppLocalizations.of(context)!.emailValidateText),
+          Colors.orange,
+          AppLocalizations.of(context)!.labelUndoText);
     }
     return result;
   }
@@ -199,7 +200,7 @@ class _SignInState extends State<SignIn> {
                       context,
                       const Text('Login button pressed'),
                       Colors.green,
-                      AppLocalizations.of(context)!.labelUndo),
+                      AppLocalizations.of(context)!.labelUndoText),
                 ),
               )
             ],
@@ -316,7 +317,7 @@ class _SignInState extends State<SignIn> {
 
   void _toggleSignInButton() {
     CustomSnackBar(context, const Text('Login button pressed'), Colors.green,
-        AppLocalizations.of(context)!.labelUndo);
+        AppLocalizations.of(context)!.labelUndoText);
   }
 
   void _toggleLogin() {

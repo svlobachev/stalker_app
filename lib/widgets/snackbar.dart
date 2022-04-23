@@ -5,8 +5,8 @@ class CustomSnackBar {
       MaterialColor currentColor, labelUndoText) {
     final SnackBar snackBar = SnackBar(
         action: SnackBarAction(
-          label: 'Undo',
-          // textColor: Colors.white,
+          label: labelUndoText,
+          textColor: Colors.yellowAccent,
           onPressed: () {
             // Some code to undo the change.
             ScaffoldMessenger.of(context).hideCurrentSnackBar();

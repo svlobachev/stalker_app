@@ -12,6 +12,6 @@
   "buttonTextSingUp": "Регистрация",
   "textForgotPassword": "Забыли пароль?",
   "textOr": "Или",
-  "emailValidate": "Введите реальный e-mail.",
-  "labelUndo": "Закрыть"
+  "emailValidateText": "Введите реальный емаил.",
+  "labelUndoText": "Закрыть"
 }

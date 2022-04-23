@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stalker_app/theme.dart';
+import 'package:stalker_app/widgets/theme.dart';
 import 'package:stalker_app/widgets/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -266,7 +266,7 @@ class _SignUpState extends State<SignUp> {
 
   void _toggleSignUpButton() {
     CustomSnackBar(context, const Text('SignUp button pressed'), Colors.green,
-        AppLocalizations.of(context)!.labelUndo);
+        AppLocalizations.of(context)!.labelUndoText);
   }
 
   void _toggleSignup() {
