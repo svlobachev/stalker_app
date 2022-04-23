@@ -265,7 +265,8 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _toggleSignUpButton() {
-    CustomSnackBar(context, const Text('SignUp button pressed'));
+    CustomSnackBar(context, const Text('SignUp button pressed'), Colors.green,
+        AppLocalizations.of(context)!.labelUndo);
   }
 
   void _toggleSignup() {

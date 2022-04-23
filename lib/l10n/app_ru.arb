@@ -11,5 +11,7 @@
   "buttonTextLogIn": "Вход",
   "buttonTextSingUp": "Регистрация",
   "textForgotPassword": "Забыли пароль?",
-  "textOr": "Или"
+  "textOr": "Или",
+  "emailValidate": "Введите реальный e-mail.",
+  "labelUndo": "Закрыть"
 }

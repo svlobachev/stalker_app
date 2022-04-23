@@ -11,5 +11,7 @@
   "buttonTextLogIn": "LOGIN",
   "buttonTextSingUp": "SIGN UP",
   "textForgotPassword": "Forgot Password?",
-  "textOr": "Or"
+  "textOr": "Or",
+  "emailValidate": "Enter real e-mail.",
+  "labelUndo": "Undo"
 }

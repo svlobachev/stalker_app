@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 
 class CustomSnackBar {
   CustomSnackBar(BuildContext context, Widget content,
-      {SnackBarAction? snackBarAction, Color backgroundColor = Colors.green}) {
+      MaterialColor currentColor, labelUndoText) {
     final SnackBar snackBar = SnackBar(
-        action: snackBarAction,
-        backgroundColor: backgroundColor,
+        action: SnackBarAction(
+          label: 'Undo',
+          // textColor: Colors.white,
+          onPressed: () {
+            // Some code to undo the change.
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          },
+        ),
+        backgroundColor: currentColor,
         content: content,
         behavior: SnackBarBehavior.floating);
 

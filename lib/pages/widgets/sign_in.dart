@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stalker_app/theme.dart';
@@ -14,11 +17,37 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
-
   final FocusNode focusNodeEmail = FocusNode();
   final FocusNode focusNodePassword = FocusNode();
+  String emailFieldText = "";
 
   bool _obscureTextPassword = true;
+
+  @override
+  void initState() {
+    super.initState();
+    focusNodeEmail.addListener(_emailFieldFocusState);
+    loginEmailController.addListener(_emailFieldLatestValue);
+  }
+
+  void _emailFieldLatestValue() {
+    if (loginEmailController.text != "") {
+      emailFieldText = loginEmailController.text;
+      if (kDebugMode) print('Email text field: ${emailFieldText}');
+    }
+  }
+
+  bool _emailFieldFocusState() {
+    bool result = focusNodeEmail.hasFocus;
+    if (kDebugMode) {
+      print("Focus: $result");
+    }
+    if (!validateEmail(emailFieldText) && !result) {
+      CustomSnackBar(context, Text(AppLocalizations.of(context)!.emailValidate),
+          Colors.red, AppLocalizations.of(context)!.labelUndo);
+    }
+    return result;
+  }
 
   @override
   void dispose() {
@@ -167,7 +196,10 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   onPressed: () => CustomSnackBar(
-                      context, const Text('Login button pressed')),
+                      context,
+                      const Text('Login button pressed'),
+                      Colors.green,
+                      AppLocalizations.of(context)!.labelUndo),
                 ),
               )
             ],
@@ -190,104 +222,117 @@ class _SignInState extends State<SignIn> {
             padding: const EdgeInsets.only(top: 10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: <Color>[
-                          Colors.white10,
-                          Colors.white,
-                        ],
-                        begin: FractionalOffset(0.0, 0.0),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: <double>[0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  width: 100.0,
-                  height: 1.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 15.0, right: 15.0),
-                  child: Text(
-                    // 'Or',
-                    AppLocalizations.of(context)!.textOr,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.0,
-                        fontFamily: 'WorkSansMedium'),
-                  ),
-                ),
-                Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                        colors: <Color>[
-                          Colors.white,
-                          Colors.white10,
-                        ],
-                        begin: FractionalOffset(0.0, 0.0),
-                        end: FractionalOffset(1.0, 1.0),
-                        stops: <double>[0.0, 1.0],
-                        tileMode: TileMode.clamp),
-                  ),
-                  width: 100.0,
-                  height: 1.0,
-                ),
+              children: const <Widget>[
+                //  Далее закомментированны кнопки oneTap authentication Google, Facebook,
+                // Container(
+                //   decoration: const BoxDecoration(
+                //     gradient: LinearGradient(
+                //         colors: <Color>[
+                //           Colors.white10,
+                //           Colors.white,
+                //         ],
+                //         begin: FractionalOffset(0.0, 0.0),
+                //         end: FractionalOffset(1.0, 1.0),
+                //         stops: <double>[0.0, 1.0],
+                //         tileMode: TileMode.clamp),
+                //   ),
+                //   width: 100.0,
+                //   height: 1.0,
+                // ),
+                // Padding(
+                //   padding: EdgeInsets.only(left: 15.0, right: 15.0),
+                //   child: Text(
+                //     // 'Or',
+                //     AppLocalizations.of(context)!.textOr,
+                //     style: TextStyle(
+                //         color: Colors.white,
+                //         fontSize: 16.0,
+                //         fontFamily: 'WorkSansMedium'),
+                //   ),
+                // ),
+                // Container(
+                //   decoration: const BoxDecoration(
+                //     gradient: LinearGradient(
+                //         colors: <Color>[
+                //           Colors.white,
+                //           Colors.white10,
+                //         ],
+                //         begin: FractionalOffset(0.0, 0.0),
+                //         end: FractionalOffset(1.0, 1.0),
+                //         stops: <double>[0.0, 1.0],
+                //         tileMode: TileMode.clamp),
+                //   ),
+                //   width: 100.0,
+                //   height: 1.0,
+                // ),// "// Это
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, right: 40.0),
-                child: GestureDetector(
-                  onTap: () => CustomSnackBar(
-                      context, const Text('Facebook button pressed')),
-                  child: Container(
-                    padding: const EdgeInsets.all(15.0),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: const Icon(
-                      FontAwesomeIcons.facebookF,
-                      color: Color(0xFF0084ff),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: GestureDetector(
-                  onTap: () => CustomSnackBar(
-                      context, const Text('Google button pressed')),
-                  child: Container(
-                    padding: const EdgeInsets.all(15.0),
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: const Icon(
-                      FontAwesomeIcons.google,
-                      color: Color(0xFF0084ff),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: <Widget>[
+          //     Padding(
+          //       padding: const EdgeInsets.only(top: 10.0, right: 40.0),
+          //       child: GestureDetector(
+          //         onTap: () => CustomSnackBar(
+          //             context, const Text('Facebook button pressed')),
+          //         child: Container(
+          //           padding: const EdgeInsets.all(15.0),
+          //           decoration: const BoxDecoration(
+          //             shape: BoxShape.circle,
+          //             color: Colors.white,
+          //           ),
+          //           child: const Icon(
+          //             FontAwesomeIcons.facebookF,
+          //             color: Color(0xFF0084ff),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //     Padding(
+          //       padding: const EdgeInsets.only(top: 10.0),
+          //       child: GestureDetector(
+          //         onTap: () => CustomSnackBar(
+          //             context, const Text('Google button pressed')),
+          //         child: Container(
+          //           padding: const EdgeInsets.all(15.0),
+          //           decoration: const BoxDecoration(
+          //             shape: BoxShape.circle,
+          //             color: Colors.white,
+          //           ),
+          //           child: const Icon(
+          //             FontAwesomeIcons.google,
+          //             color: Color(0xFF0084ff),
+          //           ),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     );
   }
 
   void _toggleSignInButton() {
-    CustomSnackBar(context, const Text('Login button pressed'));
+    CustomSnackBar(context, const Text('Login button pressed'), Colors.green,
+        AppLocalizations.of(context)!.labelUndo);
   }
 
   void _toggleLogin() {
     setState(() {
       _obscureTextPassword = !_obscureTextPassword;
     });
+  }
+
+  bool validateEmail(String? value) {
+    String pattern =
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+    RegExp regex = RegExp(pattern);
+    if (!regex.hasMatch(value!)) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }
