@@ -38,7 +38,8 @@ class _LoginPageState extends State<LoginPage>
       physics: const ClampingScrollPhysics(),
       child: GestureDetector(
         onTap: () {
-          FocusScope.of(context).requestFocus(FocusNode());
+          // FocusScope.of(context).requestFocus(FocusNode());
+          FocusScope.of(context).unfocus();
         },
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -75,7 +76,8 @@ class _LoginPageState extends State<LoginPage>
                   controller: _pageController,
                   physics: const ClampingScrollPhysics(),
                   onPageChanged: (int i) {
-                    FocusScope.of(context).requestFocus(FocusNode());
+                    // FocusScope.of(context).requestFocus(FocusNode());
+                    FocusScope.of(context).unfocus();
                     if (i == 0) {
                       setState(() {
                         right = Colors.white;
@@ -91,11 +93,11 @@ class _LoginPageState extends State<LoginPage>
                   children: <Widget>[
                     ConstrainedBox(
                       constraints: const BoxConstraints.expand(),
-                      child: const SignIn(),
+                      child: SignIn(),
                     ),
                     ConstrainedBox(
                       constraints: const BoxConstraints.expand(),
-                      child: const SignUp(),
+                      child: SignUp(),
                     ),
                   ],
                 ),
@@ -162,10 +164,16 @@ class _LoginPageState extends State<LoginPage>
   void _onSignInButtonPress() {
     _pageController.animateToPage(0,
         duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+    SignInState signInState = SignInState();
+    signInState.onSignInButtonPress = true;
+    signInState.onSignUpButtonPress = false;
   }
 
   void _onSignUpButtonPress() {
     _pageController.animateToPage(1,
         duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+    SignInState signInState = SignInState();
+    signInState.onSignUpButtonPress = true;
+    signInState.onSignInButtonPress = false;
   }
 }

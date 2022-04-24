@@ -9,17 +9,27 @@ class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
   @override
-  _SignInState createState() => _SignInState();
+  SignInState createState() => SignInState();
 }
 
-class _SignInState extends State<SignIn> {
+class SignInState extends State<SignIn> {
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
   final FocusNode focusNodeEmail = FocusNode();
   final FocusNode focusNodePassword = FocusNode();
   String emailFieldText = "";
-
   bool _obscureTextPassword = true;
+
+  static bool _onSignInButtonPress = false;
+  static bool _onSignUpButtonPress = false;
+
+  set onSignUpButtonPress(bool value) {
+    _onSignUpButtonPress = value;
+  }
+
+  set onSignInButtonPress(bool value) {
+    _onSignInButtonPress = value;
+  }
 
   @override
   void initState() {
@@ -38,9 +48,11 @@ class _SignInState extends State<SignIn> {
   bool _emailFieldFocusState() {
     bool result = focusNodeEmail.hasFocus;
     if (kDebugMode) {
-      print("Focus: $result");
+      print("Focus of email field: $result");
+      print("_onSignInButtonPress $_onSignInButtonPress");
+      print("_onSignUpButtonPress $_onSignUpButtonPress");
     }
-    if (!validateEmail(emailFieldText) && !result) {
+    if (!validateEmail(emailFieldText) && !result && !_onSignUpButtonPress) {
       CustomSnackBar(
           context,
           Text(AppLocalizations.of(context)!.emailValidateText),
