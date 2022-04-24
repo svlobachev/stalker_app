@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stalker_app/widgets/theme.dart';
-import 'package:stalker_app/widgets/snackbar.dart';
+import 'package:stalker_app/utils/theme.dart';
+import 'package:stalker_app/utils/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:stalker_app/utils/fields_validator.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -18,7 +19,9 @@ class SignInState extends State<SignIn> {
   final FocusNode focusNodeEmail = FocusNode();
   final FocusNode focusNodePassword = FocusNode();
   String emailFieldText = "";
+  String passwordFieldText = "";
   bool _obscureTextPassword = true;
+  FieldsValidator fieldsValidator = FieldsValidator();
 
   static bool _onSignInButtonPress = false;
   static bool _onSignUpButtonPress = false;
@@ -35,13 +38,18 @@ class SignInState extends State<SignIn> {
   void initState() {
     super.initState();
     focusNodeEmail.addListener(_emailFieldFocusState);
-    loginEmailController.addListener(_emailFieldLatestValue);
+    focusNodePassword.addListener(_passwordsFieldFocus);
+    loginEmailController.addListener(_fieldLatestValue);
+    loginPasswordController.addListener(_fieldLatestValue);
   }
 
-  void _emailFieldLatestValue() {
+  void _fieldLatestValue() {
     if (loginEmailController.text != "") {
       emailFieldText = loginEmailController.text;
       if (kDebugMode) print('Email text field: ${emailFieldText}');
+    } else if (loginPasswordController.text != "") {
+      passwordFieldText = loginPasswordController.text;
+      if (kDebugMode) print('Password text field: ${passwordFieldText}');
     }
   }
 
@@ -49,15 +57,28 @@ class SignInState extends State<SignIn> {
     bool result = focusNodeEmail.hasFocus;
     if (kDebugMode) {
       print("Focus of email field: $result");
-      print("_onSignInButtonPress $_onSignInButtonPress");
-      print("_onSignUpButtonPress $_onSignUpButtonPress");
     }
-    if (!validateEmail(emailFieldText) && !result && !_onSignUpButtonPress) {
+    if (!fieldsValidator.validateEmail(emailFieldText) &&
+        !result &&
+        !_onSignUpButtonPress) {
+      CustomSnackBar(context,
+          Text(AppLocalizations.of(context)!.emailValidateText), Colors.orange);
+    }
+    return result;
+  }
+
+  bool _passwordsFieldFocus() {
+    bool result = focusNodePassword.hasFocus;
+    if (kDebugMode) {
+      print("Focus of password field: $result");
+    }
+    if (!fieldsValidator.validatePassword(passwordFieldText) &&
+        !result &&
+        !_onSignUpButtonPress) {
       CustomSnackBar(
           context,
-          Text(AppLocalizations.of(context)!.emailValidateText),
-          Colors.orange,
-          AppLocalizations.of(context)!.labelUndoText);
+          Text(AppLocalizations.of(context)!.passwordValidateText),
+          Colors.orange);
     }
     return result;
   }
@@ -141,7 +162,6 @@ class SignInState extends State<SignIn> {
                               size: 22.0,
                               color: Colors.black,
                             ),
-                            // hintText: 'Password',
                             hintText:
                                 AppLocalizations.of(context)!.hintTextPassword,
                             hintStyle: const TextStyle(
@@ -208,11 +228,8 @@ class SignInState extends State<SignIn> {
                           fontFamily: 'WorkSansBold'),
                     ),
                   ),
-                  onPressed: () => CustomSnackBar(
-                      context,
-                      const Text('Login button pressed'),
-                      Colors.green,
-                      AppLocalizations.of(context)!.labelUndoText),
+                  onPressed: () => CustomSnackBar(context,
+                      const Text('Login button pressed'), Colors.green),
                 ),
               )
             ],
@@ -328,24 +345,12 @@ class SignInState extends State<SignIn> {
   }
 
   void _toggleSignInButton() {
-    CustomSnackBar(context, const Text('Login button pressed'), Colors.green,
-        AppLocalizations.of(context)!.labelUndoText);
+    CustomSnackBar(context, const Text('Login button pressed'), Colors.green);
   }
 
   void _toggleLogin() {
     setState(() {
       _obscureTextPassword = !_obscureTextPassword;
     });
-  }
-
-  bool validateEmail(String? value) {
-    String pattern =
-        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = RegExp(pattern);
-    if (!regex.hasMatch(value!)) {
-      return false;
-    } else {
-      return true;
-    }
   }
 }

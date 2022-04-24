@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:stalker_app/widgets/theme.dart';
-import 'package:stalker_app/widgets/snackbar.dart';
+import 'package:stalker_app/utils/theme.dart';
+import 'package:stalker_app/utils/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
   @override
-  _SignUpState createState() => _SignUpState();
+  SignUpState createState() => SignUpState();
 }
 
-class _SignUpState extends State<SignUp> {
+class SignUpState extends State<SignUp> {
   final FocusNode focusNodePassword = FocusNode();
   final FocusNode focusNodeConfirmPassword = FocusNode();
   final FocusNode focusNodeEmail = FocusNode();
@@ -25,6 +25,17 @@ class _SignUpState extends State<SignUp> {
   TextEditingController signupPasswordController = TextEditingController();
   TextEditingController signupConfirmPasswordController =
       TextEditingController();
+
+  static bool _onSignInButtonPress = false;
+  static bool _onSignUpButtonPress = false;
+
+  set onSignUpButtonPress(bool value) {
+    _onSignUpButtonPress = value;
+  }
+
+  set onSignInButtonPress(bool value) {
+    _onSignInButtonPress = value;
+  }
 
   @override
   void dispose() {
@@ -265,8 +276,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   void _toggleSignUpButton() {
-    CustomSnackBar(context, const Text('SignUp button pressed'), Colors.green,
-        AppLocalizations.of(context)!.labelUndoText);
+    CustomSnackBar(context, const Text('SignUp button pressed'), Colors.green);
   }
 
   void _toggleSignup() {

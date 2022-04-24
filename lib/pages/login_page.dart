@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stalker_app/pages/widgets/sign_in.dart';
 import 'package:stalker_app/pages/widgets/sign_up.dart';
-import 'package:stalker_app/widgets/theme.dart';
+import 'package:stalker_app/utils/theme.dart';
 import 'package:stalker_app/utils/bubble_indicator_painter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -164,16 +164,32 @@ class _LoginPageState extends State<LoginPage>
   void _onSignInButtonPress() {
     _pageController.animateToPage(0,
         duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
     SignInState signInState = SignInState();
+    SignUpState signUpState = SignUpState();
+
     signInState.onSignInButtonPress = true;
     signInState.onSignUpButtonPress = false;
+
+    signUpState.onSignInButtonPress = false;
+    signUpState.onSignUpButtonPress = true;
   }
 
   void _onSignUpButtonPress() {
     _pageController.animateToPage(1,
         duration: const Duration(milliseconds: 500), curve: Curves.decelerate);
+
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+
     SignInState signInState = SignInState();
+    SignUpState signUpState = SignUpState();
+
     signInState.onSignUpButtonPress = true;
     signInState.onSignInButtonPress = false;
+
+    signUpState.onSignInButtonPress = true;
+    signUpState.onSignUpButtonPress = false;
   }
 }

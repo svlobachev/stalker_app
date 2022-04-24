@@ -13,5 +13,6 @@
   "textForgotPassword": "Forgot Password?",
   "textOr": "Or",
   "emailValidateText": "Enter real email.",
+  "passwordValidateText": "At least one number, a special character, a lowercase Latin letter, an uppercase Latin letter, 6 of the above characters.",
   "labelUndoText": "Undo"
 }

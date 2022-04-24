@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomSnackBar {
-  CustomSnackBar(BuildContext context, Widget content,
-      MaterialColor currentColor, labelUndoText) {
+  CustomSnackBar(
+      BuildContext context, Widget content, MaterialColor currentColor) {
     final SnackBar snackBar = SnackBar(
         action: SnackBarAction(
-          label: labelUndoText,
+          label: AppLocalizations.of(context)!.labelUndoText,
           textColor: Colors.yellowAccent,
           onPressed: () {
             // Some code to undo the change.
