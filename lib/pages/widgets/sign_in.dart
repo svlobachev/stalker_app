@@ -23,16 +23,16 @@ class SignInState extends State<SignIn> {
   bool _obscureTextPassword = true;
   FieldsValidator fieldsValidator = FieldsValidator();
 
-  static bool _onSignInButtonPress = false;
+  // static bool _onSignInButtonPress = false;
   static bool _onSignUpButtonPress = false;
 
   set onSignUpButtonPress(bool value) {
     _onSignUpButtonPress = value;
   }
 
-  set onSignInButtonPress(bool value) {
-    _onSignInButtonPress = value;
-  }
+  // set onSignInButtonPress(bool value) {
+  //   _onSignInButtonPress = value;
+  // }
 
   @override
   void initState() {
@@ -105,7 +105,7 @@ class SignInState extends State<SignIn> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Container(
+                child: SizedBox(
                   width: 300.0,
                   height: 190.0,
                   child: Column(
@@ -123,7 +123,7 @@ class SignInState extends State<SignIn> {
                               color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(
+                            icon: const Icon(
                               FontAwesomeIcons.envelope,
                               color: Colors.black,
                               size: 22.0,
@@ -131,7 +131,7 @@ class SignInState extends State<SignIn> {
                             // hintText: 'Email Address',
                             hintText: AppLocalizations.of(context)!
                                 .hintTextEmailAddress,
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 17.0),
                           ),
                           onSubmitted: (_) {
@@ -217,12 +217,12 @@ class SignInState extends State<SignIn> {
                   highlightColor: Colors.transparent,
                   splashColor: CustomTheme.loginGradientEnd,
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 42.0),
                     child: Text(
                       // 'LOGIN',
                       AppLocalizations.of(context)!.buttonTextLogIn,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
                           fontFamily: 'WorkSansBold'),
@@ -241,7 +241,7 @@ class SignInState extends State<SignIn> {
                 child: Text(
                   // 'Forgot Password?',
                   AppLocalizations.of(context)!.textForgotPassword,
-                  style: TextStyle(
+                  style: const TextStyle(
                       decoration: TextDecoration.underline,
                       color: Colors.white,
                       fontSize: 16.0,

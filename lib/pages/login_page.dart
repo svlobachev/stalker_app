@@ -15,7 +15,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage>
     with SingleTickerProviderStateMixin {
   late PageController _pageController;
-
+  SignInState signInState = SignInState();
+  SignUpState signUpState = SignUpState();
   Color left = Colors.black;
   Color right = Colors.white;
 
@@ -167,10 +168,6 @@ class _LoginPageState extends State<LoginPage>
 
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-    SignInState signInState = SignInState();
-    SignUpState signUpState = SignUpState();
-
-    signInState.onSignInButtonPress = true;
     signInState.onSignUpButtonPress = false;
 
     signUpState.onSignInButtonPress = false;
@@ -183,11 +180,7 @@ class _LoginPageState extends State<LoginPage>
 
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-    SignInState signInState = SignInState();
-    SignUpState signUpState = SignUpState();
-
     signInState.onSignUpButtonPress = true;
-    signInState.onSignInButtonPress = false;
 
     signUpState.onSignInButtonPress = true;
     signUpState.onSignUpButtonPress = false;

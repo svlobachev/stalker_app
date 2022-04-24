@@ -259,7 +259,7 @@ class SignUpState extends State<SignUp> {
                     child: Text(
                       // 'SIGN UP',
                       AppLocalizations.of(context)!.buttonTextSingUp,
-                      style: TextStyle(
+                      style: const TextStyle(
                           color: Colors.white,
                           fontSize: 25.0,
                           fontFamily: 'WorkSansBold'),
