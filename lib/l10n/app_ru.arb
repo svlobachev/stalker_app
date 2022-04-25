@@ -12,7 +12,9 @@
   "buttonTextSingUp": "Регистрация",
   "textForgotPassword": "Забыли пароль?",
   "textOr": "Или",
+  "nameValidateText": "Допускается латинские A-Z, 0-9, '_' или точка, не более 30 символов.",
   "emailValidateText": "Введите реальный емаил.",
   "passwordValidateText": "Хотя бы одно число, спецсимвол, латинскую букву в нижнем регистре, латинскую букву в верхнем регистре, не менее 6 символов.",
+  "confirmPasswordValidateText": "Пароли должны совпадать.",
   "labelUndoText": "Закрыть"
 }

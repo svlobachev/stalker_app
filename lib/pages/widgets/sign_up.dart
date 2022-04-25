@@ -31,13 +31,14 @@ class SignUpState extends State<SignUp> {
       TextEditingController();
 
   final _signupFieldsFocus = <String, bool>{};
+  final _signupFieldsText = <String, String>{
+    'signupNameText': '',
+    'signupEmailText': '',
+    'signupPasswordText': '',
+    'signupConfirmPasswordText': ''
+  };
 
   static bool _onSignInButtonPress = false;
-  static bool _onSignUpButtonPress = false;
-
-  set onSignUpButtonPress(bool value) {
-    _onSignUpButtonPress = value;
-  }
 
   set onSignInButtonPress(bool value) {
     _onSignInButtonPress = value;
@@ -57,6 +58,23 @@ class SignUpState extends State<SignUp> {
     super.initState();
   }
 
+  void _fieldsLatestValue() {
+    if (_signupNameController.text != "") {
+      _signupFieldsText['signupNameText'] = _signupNameController.text;
+    }
+    if (_signupEmailController.text != "") {
+      _signupFieldsText['signupEmailText'] = _signupEmailController.text;
+    }
+    if (_signupPasswordController.text != "") {
+      _signupFieldsText['signupPasswordText'] = _signupPasswordController.text;
+    }
+    if (_signupConfirmPasswordController.text != "") {
+      _signupFieldsText['signupConfirmPasswordText'] =
+          _signupConfirmPasswordController.text;
+    }
+    print(_signupFieldsText);
+  }
+
   void _fieldsFocusState() {
     // containsKey(Object key): возвращает true, если Map содержит ключ key
     // containsValue(Object value): возвращает true, если Map содержит значение value
@@ -65,7 +83,41 @@ class SignUpState extends State<SignUp> {
       if (!signupFocusNode &&
           _signupFieldsFocus.containsKey(strKey) &&
           _signupFieldsFocus[strKey] == true) {
-        _signupFieldsFocus[strKey] = signupFocusNode;
+        _signupFieldsFocus[strKey] = false;
+        if (strKey == 'signupFocusNodeName' &&
+            !_onSignInButtonPress &&
+            !fieldsValidator
+                .validateName(_signupFieldsText['signupNameText'])) {
+          CustomSnackBar(
+              context,
+              Text(AppLocalizations.of(context)!.nameValidateText),
+              Colors.orange);
+        } else if (strKey == 'signupFocusNodeEmail' &&
+            !_onSignInButtonPress &&
+            !fieldsValidator
+                .validateEmail(_signupFieldsText['signupEmailText'])) {
+          CustomSnackBar(
+              context,
+              Text(AppLocalizations.of(context)!.emailValidateText),
+              Colors.orange);
+        } else if (strKey == 'signupFocusNodePassword' &&
+            !_onSignInButtonPress &&
+            !fieldsValidator
+                .validatePassword(_signupFieldsText['signupPasswordText'])) {
+          CustomSnackBar(
+              context,
+              Text(AppLocalizations.of(context)!.passwordValidateText),
+              Colors.orange);
+        } else if (strKey == 'signupFocusNodeConfirmPassword' &&
+            !_onSignInButtonPress &&
+            !fieldsValidator.validateConfirmPassword(
+                _signupFieldsText['signupPasswordText'],
+                _signupFieldsText['signupConfirmPasswordText'])) {
+          CustomSnackBar(
+              context,
+              Text(AppLocalizations.of(context)!.confirmPasswordValidateText),
+              Colors.orange);
+        }
       } else if (signupFocusNode) {
         _signupFieldsFocus[strKey] = signupFocusNode;
       } else if (!signupFocusNode &&
@@ -93,25 +145,6 @@ class SignUpState extends State<SignUp> {
 
     if (kDebugMode) {
       print(_signupFieldsFocus);
-    }
-  }
-
-  void _fieldsLatestValue() {
-    String result = '';
-    if (_signupNameController.text != "") {
-      result = _signupNameController.text;
-      if (kDebugMode) print('nameFieldText: $result');
-    } else if (_signupEmailController.text != "") {
-      result = _signupEmailController.text;
-      if (kDebugMode) print('emailFieldText: $result');
-    } else if (_signupPasswordController.text != "") {
-      result = _signupPasswordController.text;
-      if (kDebugMode) print('passwordFieldText: $result');
-    } else if (_signupConfirmPasswordController.text != "") {
-      result = _signupConfirmPasswordController.text;
-      if (kDebugMode) {
-        print('confirmPasswordFieldText: $result');
-      }
     }
   }
 

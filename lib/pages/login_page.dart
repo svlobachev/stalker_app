@@ -169,9 +169,7 @@ class _LoginPageState extends State<LoginPage>
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
     signInState.onSignUpButtonPress = false;
-
-    signUpState.onSignInButtonPress = false;
-    signUpState.onSignUpButtonPress = true;
+    signUpState.onSignInButtonPress = true;
   }
 
   void _onSignUpButtonPress() {
@@ -182,7 +180,6 @@ class _LoginPageState extends State<LoginPage>
 
     signInState.onSignUpButtonPress = true;
 
-    signUpState.onSignInButtonPress = true;
-    signUpState.onSignUpButtonPress = false;
+    signUpState.onSignInButtonPress = false;
   }
 }

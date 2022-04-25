@@ -12,7 +12,9 @@
   "buttonTextSingUp": "SIGN UP",
   "textForgotPassword": "Forgot Password?",
   "textOr": "Or",
+  "nameValidateText": "Latin A-Z, 0-9, '_' or dot is allowed, maximum 30 characters.",
   "emailValidateText": "Enter real email.",
   "passwordValidateText": "At least one number, special character, lowercase Latin letter, uppercase Latin letter, at least 6 characters.",
+  "confirmPasswordValidateText": "Passwords must match.",
   "labelUndoText": "Undo"
 }
