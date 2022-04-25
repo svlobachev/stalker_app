@@ -46,18 +46,17 @@ class SignInState extends State<SignIn> {
   void _fieldLatestValue() {
     if (loginEmailController.text != "") {
       emailFieldText = loginEmailController.text;
-      if (kDebugMode) print('Email text field: ${emailFieldText}');
+      // if (kDebugMode) print('Email text field: ${emailFieldText}');
     } else if (loginPasswordController.text != "") {
       passwordFieldText = loginPasswordController.text;
-      if (kDebugMode) print('Password text field: ${passwordFieldText}');
+      // if (kDebugMode) print('Password text field: ${passwordFieldText}');
     }
   }
 
   bool _emailFieldFocusState() {
     bool result = focusNodeEmail.hasFocus;
-    if (kDebugMode) {
-      print("Focus of email field: $result");
-    }
+    if (kDebugMode) print("Focus of email field: $result");
+
     if (!fieldsValidator.validateEmail(emailFieldText) &&
         !result &&
         !_onSignUpButtonPress) {
