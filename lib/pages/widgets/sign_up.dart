@@ -93,6 +93,7 @@ class SignUpState extends State<SignUp> {
               Text(AppLocalizations.of(context)!.nameValidateText),
               Colors.orange);
         } else if (strKey == 'signupFocusNodeEmail' &&
+            !_signupFieldsFocus.containsKey('signupFocusNodeName') &&
             !_onSignInButtonPress &&
             !fieldsValidator
                 .validateEmail(_signupFieldsText['signupEmailText'])) {
@@ -101,6 +102,7 @@ class SignUpState extends State<SignUp> {
               Text(AppLocalizations.of(context)!.emailValidateText),
               Colors.orange);
         } else if (strKey == 'signupFocusNodePassword' &&
+            !_signupFieldsFocus.containsKey('signupFocusNodeEmail') &&
             !_onSignInButtonPress &&
             !fieldsValidator
                 .validatePassword(_signupFieldsText['signupPasswordText'])) {
@@ -109,6 +111,7 @@ class SignUpState extends State<SignUp> {
               Text(AppLocalizations.of(context)!.passwordValidateText),
               Colors.orange);
         } else if (strKey == 'signupFocusNodeConfirmPassword' &&
+            // !_signupFieldsFocus.containsKey('signupFocusNodePassword') &&
             !_onSignInButtonPress &&
             !fieldsValidator.validateConfirmPassword(
                 _signupFieldsText['signupPasswordText'],

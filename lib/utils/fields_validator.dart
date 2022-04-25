@@ -20,7 +20,7 @@ class FieldsValidator {
 
   bool validatePassword(String? value) {
     String pattern =
-        r'((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).[0-9!@#$%^&*a-zA-Z]{6,30})';
+        r'((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#&$%]).[0-9!@#$%^&*a-zA-Z]{6,30})';
     RegExp regex = RegExp(pattern);
     if (!regex.hasMatch(value!)) {
       if (kDebugMode) {
@@ -36,9 +36,6 @@ class FieldsValidator {
   }
 
   bool validateConfirmPassword(String? value, String? value1) {
-    String pattern =
-        r'((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).[0-9!@#$%^&*a-zA-Z]{6,30})';
-    RegExp regex = RegExp(pattern);
     if (value! != value1!) {
       if (kDebugMode) {
         print("validateConfirmPassword: false");
