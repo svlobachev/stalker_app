@@ -14,22 +14,23 @@ class SignUp extends StatefulWidget {
 }
 
 class SignUpState extends State<SignUp> {
-  final FocusNode signupFocusNodeName = FocusNode();
-  final FocusNode signupFocusNodeEmail = FocusNode();
-  final FocusNode signupFocusNodePassword = FocusNode();
-  final FocusNode signupFocusNodeConfirmPassword = FocusNode();
+  final FocusNode _signupFocusNodeName = FocusNode();
+  final FocusNode _signupFocusNodeEmail = FocusNode();
+  final FocusNode _signupFocusNodePassword = FocusNode();
+  final FocusNode _signupFocusNodeConfirmPassword = FocusNode();
 
   bool _obscureTextPassword = true;
   bool _obscureTextConfirmPassword = true;
   FieldsValidator fieldsValidator = FieldsValidator();
 
-  TextEditingController signupNameController = TextEditingController();
-  TextEditingController signupEmailController = TextEditingController();
-  TextEditingController signupPasswordController = TextEditingController();
-  TextEditingController signupConfirmPasswordController =
+  final TextEditingController _signupNameController = TextEditingController();
+  final TextEditingController _signupEmailController = TextEditingController();
+  final TextEditingController _signupPasswordController =
+      TextEditingController();
+  final TextEditingController _signupConfirmPasswordController =
       TextEditingController();
 
-  var signupFieldsFocus = <String, bool>{};
+  final _signupFieldsFocus = <String, bool>{};
 
   static bool _onSignInButtonPress = false;
   static bool _onSignUpButtonPress = false;
@@ -44,15 +45,15 @@ class SignUpState extends State<SignUp> {
 
   @override
   void initState() {
-    signupFocusNodeName.addListener(_fieldsFocusState);
+    _signupFocusNodeName.addListener(_fieldsFocusState);
     // signupFocusNodeEmail.addListener(_fieldsFocusState);
-    signupFocusNodePassword.addListener(_fieldsFocusState);
+    _signupFocusNodePassword.addListener(_fieldsFocusState);
     // signupFocusNodeConfirmPassword.addListener(_fieldsFocusState);
 
-    signupNameController.addListener(_fieldsLatestValue);
-    signupEmailController.addListener(_fieldsLatestValue);
-    signupPasswordController.addListener(_fieldsLatestValue);
-    signupConfirmPasswordController.addListener(_fieldsLatestValue);
+    _signupNameController.addListener(_fieldsLatestValue);
+    _signupEmailController.addListener(_fieldsLatestValue);
+    _signupPasswordController.addListener(_fieldsLatestValue);
+    _signupConfirmPasswordController.addListener(_fieldsLatestValue);
     super.initState();
   }
 
@@ -62,52 +63,52 @@ class SignUpState extends State<SignUp> {
 
     _subFieldsFocusState(strKey, signupFocusNode) {
       if (!signupFocusNode &&
-          signupFieldsFocus.containsKey(strKey) &&
-          signupFieldsFocus[strKey] == true) {
-        signupFieldsFocus[strKey] = signupFocusNode;
+          _signupFieldsFocus.containsKey(strKey) &&
+          _signupFieldsFocus[strKey] == true) {
+        _signupFieldsFocus[strKey] = signupFocusNode;
       } else if (signupFocusNode) {
-        signupFieldsFocus[strKey] = signupFocusNode;
+        _signupFieldsFocus[strKey] = signupFocusNode;
       } else if (!signupFocusNode &&
-          signupFieldsFocus.containsKey(strKey) &&
-          signupFieldsFocus[strKey] == false) {
-        signupFieldsFocus.remove(strKey);
+          _signupFieldsFocus.containsKey(strKey) &&
+          _signupFieldsFocus[strKey] == false) {
+        _signupFieldsFocus.remove(strKey);
       }
     }
 
     String strKey = 'signupFocusNodeName';
-    var signupFocusNode = signupFocusNodeName.hasFocus;
+    var signupFocusNode = _signupFocusNodeName.hasFocus;
     _subFieldsFocusState(strKey, signupFocusNode);
 
     strKey = 'signupFocusNodeEmail';
-    signupFocusNode = signupFocusNodeEmail.hasFocus;
+    signupFocusNode = _signupFocusNodeEmail.hasFocus;
     _subFieldsFocusState(strKey, signupFocusNode);
 
     strKey = 'signupFocusNodePassword';
-    signupFocusNode = signupFocusNodePassword.hasFocus;
+    signupFocusNode = _signupFocusNodePassword.hasFocus;
     _subFieldsFocusState(strKey, signupFocusNode);
 
     strKey = 'signupFocusNodeConfirmPassword';
-    signupFocusNode = signupFocusNodeConfirmPassword.hasFocus;
+    signupFocusNode = _signupFocusNodeConfirmPassword.hasFocus;
     _subFieldsFocusState(strKey, signupFocusNode);
 
     if (kDebugMode) {
-      print(signupFieldsFocus);
+      print(_signupFieldsFocus);
     }
   }
 
   void _fieldsLatestValue() {
     String result = '';
-    if (signupNameController.text != "") {
-      result = signupNameController.text;
+    if (_signupNameController.text != "") {
+      result = _signupNameController.text;
       if (kDebugMode) print('nameFieldText: $result');
-    } else if (signupEmailController.text != "") {
-      result = signupEmailController.text;
+    } else if (_signupEmailController.text != "") {
+      result = _signupEmailController.text;
       if (kDebugMode) print('emailFieldText: $result');
-    } else if (signupPasswordController.text != "") {
-      result = signupPasswordController.text;
+    } else if (_signupPasswordController.text != "") {
+      result = _signupPasswordController.text;
       if (kDebugMode) print('passwordFieldText: $result');
-    } else if (signupConfirmPasswordController.text != "") {
-      result = signupConfirmPasswordController.text;
+    } else if (_signupConfirmPasswordController.text != "") {
+      result = _signupConfirmPasswordController.text;
       if (kDebugMode) {
         print('confirmPasswordFieldText: $result');
       }
@@ -116,10 +117,10 @@ class SignUpState extends State<SignUp> {
 
   @override
   void dispose() {
-    signupFocusNodePassword.dispose();
-    signupFocusNodeConfirmPassword.dispose();
-    signupFocusNodeEmail.dispose();
-    signupFocusNodeName.dispose();
+    _signupFocusNodePassword.dispose();
+    _signupFocusNodeConfirmPassword.dispose();
+    _signupFocusNodeEmail.dispose();
+    _signupFocusNodeName.dispose();
     super.dispose();
   }
 
@@ -147,8 +148,8 @@ class SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                          focusNode: signupFocusNodeName,
-                          controller: signupNameController,
+                          focusNode: _signupFocusNodeName,
+                          controller: _signupNameController,
                           keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.words,
                           autocorrect: false,
@@ -158,14 +159,14 @@ class SignUpState extends State<SignUp> {
                               color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(
+                            icon: const Icon(
                               FontAwesomeIcons.user,
                               color: Colors.black,
                             ),
                             // hintText: 'Name',
                             hintText:
                                 AppLocalizations.of(context)!.hintTextName,
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
                           onSubmitted: (_) {
@@ -182,8 +183,8 @@ class SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                          focusNode: signupFocusNodeEmail,
-                          controller: signupEmailController,
+                          focusNode: _signupFocusNodeEmail,
+                          controller: _signupEmailController,
                           keyboardType: TextInputType.emailAddress,
                           autocorrect: false,
                           style: const TextStyle(
@@ -192,14 +193,14 @@ class SignUpState extends State<SignUp> {
                               color: Colors.black),
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            icon: Icon(
+                            icon: const Icon(
                               FontAwesomeIcons.envelope,
                               color: Colors.black,
                             ),
                             // hintText: 'Email Address',
                             hintText: AppLocalizations.of(context)!
                                 .hintTextEmailAddress,
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
                           onSubmitted: (_) {
@@ -216,8 +217,8 @@ class SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                          focusNode: signupFocusNodePassword,
-                          controller: signupPasswordController,
+                          focusNode: _signupFocusNodePassword,
+                          controller: _signupPasswordController,
                           obscureText: _obscureTextPassword,
                           autocorrect: false,
                           style: const TextStyle(
@@ -260,8 +261,8 @@ class SignUpState extends State<SignUp> {
                         padding: const EdgeInsets.only(
                             top: 20.0, bottom: 20.0, left: 25.0, right: 25.0),
                         child: TextField(
-                          focusNode: signupFocusNodeConfirmPassword,
-                          controller: signupConfirmPasswordController,
+                          focusNode: _signupFocusNodeConfirmPassword,
+                          controller: _signupConfirmPasswordController,
                           obscureText: _obscureTextConfirmPassword,
                           autocorrect: false,
                           style: const TextStyle(
@@ -331,8 +332,8 @@ class SignUpState extends State<SignUp> {
                   splashColor: CustomTheme.loginGradientEnd,
                   //shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(5.0))),
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 42.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 42.0),
                     child: Text(
                       // 'SIGN UP',
                       AppLocalizations.of(context)!.buttonTextSingUp,
