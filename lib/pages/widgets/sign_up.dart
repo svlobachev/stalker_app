@@ -206,7 +206,7 @@ class SignUpState extends State<SignUp> {
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
                           onSubmitted: (_) {
-                            // signupFocusNodeEmail.requestFocus();
+                            _signupFocusNodeEmail.requestFocus();
                           },
                         ),
                       ),
@@ -240,7 +240,7 @@ class SignUpState extends State<SignUp> {
                                 fontFamily: 'WorkSansSemiBold', fontSize: 16.0),
                           ),
                           onSubmitted: (_) {
-                            // signupFocusNodePassword.requestFocus();
+                            _signupFocusNodePassword.requestFocus();
                           },
                         ),
                       ),
@@ -284,7 +284,7 @@ class SignUpState extends State<SignUp> {
                             ),
                           ),
                           onSubmitted: (_) {
-                            // signupFocusNodeConfirmPassword.requestFocus();
+                            _signupFocusNodeConfirmPassword.requestFocus();
                           },
                         ),
                       ),
