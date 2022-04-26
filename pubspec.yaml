@@ -15,6 +15,9 @@ dependencies:
     sdk: flutter
   font_awesome_flutter:
   injectable: ^1.5.3
+  async: ^2.2.0
+  grpc: ^3.0.2
+  protobuf: ^2.0.0
 
 
 dev_dependencies:
