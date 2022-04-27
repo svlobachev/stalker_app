@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stalker_app/utils/theme.dart';
-import 'package:stalker_app/utils/snackbar.dart';
+import 'package:stalker_app/pages/parts/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:stalker_app/utils/fields_validator.dart';
+import 'package:stalker_app/pages/parts/fields_validator.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -87,7 +87,8 @@ class SignUpState extends State<SignUp> {
         if (strKey == 'signupFocusNodeName' &&
             !_onSignInButtonPress &&
             !fieldsValidator
-                .validateName(_signupFieldsText['signupNameText'])) {
+                .validateName(_signupFieldsText['signupNameText']) &&
+            _signupFieldsText['signupNameText'] != '') {
           CustomSnackBar(
               context,
               Text(AppLocalizations.of(context)!.nameValidateText),
@@ -96,7 +97,8 @@ class SignUpState extends State<SignUp> {
             !_signupFieldsFocus.containsKey('signupFocusNodeName') &&
             !_onSignInButtonPress &&
             !fieldsValidator
-                .validateEmail(_signupFieldsText['signupEmailText'])) {
+                .validateEmail(_signupFieldsText['signupEmailText']) &&
+            _signupFieldsText['signupEmailText'] != '') {
           CustomSnackBar(
               context,
               Text(AppLocalizations.of(context)!.emailValidateText),
@@ -105,7 +107,8 @@ class SignUpState extends State<SignUp> {
             !_signupFieldsFocus.containsKey('signupFocusNodeEmail') &&
             !_onSignInButtonPress &&
             !fieldsValidator
-                .validatePassword(_signupFieldsText['signupPasswordText'])) {
+                .validatePassword(_signupFieldsText['signupPasswordText']) &&
+            _signupFieldsText['signupPasswordText'] != '') {
           CustomSnackBar(
               context,
               Text(AppLocalizations.of(context)!.passwordValidateText),
@@ -115,7 +118,8 @@ class SignUpState extends State<SignUp> {
             !_onSignInButtonPress &&
             !fieldsValidator.validateConfirmPassword(
                 _signupFieldsText['signupPasswordText'],
-                _signupFieldsText['signupConfirmPasswordText'])) {
+                _signupFieldsText['signupConfirmPasswordText']) &&
+            _signupFieldsText['signupConfirmPasswordText'] != '') {
           CustomSnackBar(
               context,
               Text(AppLocalizations.of(context)!.confirmPasswordValidateText),

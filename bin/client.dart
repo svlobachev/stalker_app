@@ -22,7 +22,7 @@ Future<void> main(List<String> args) async {
     'localhost',
     port: 6565,
     options: ChannelOptions(
-      credentials: ChannelCredentials.insecure(),
+      credentials: const ChannelCredentials.insecure(),
       codecRegistry:
           CodecRegistry(codecs: const [GzipCodec(), IdentityCodec()]),
     ),

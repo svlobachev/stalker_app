@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stalker_app/utils/theme.dart';
-import 'package:stalker_app/utils/snackbar.dart';
+import 'package:stalker_app/pages/parts/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:stalker_app/utils/fields_validator.dart';
+import 'package:stalker_app/pages/parts/fields_validator.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -59,7 +59,8 @@ class SignInState extends State<SignIn> {
 
     if (!fieldsValidator.validateEmail(emailFieldText) &&
         !result &&
-        !_onSignUpButtonPress) {
+        !_onSignUpButtonPress &&
+        loginEmailController.text != '') {
       CustomSnackBar(context,
           Text(AppLocalizations.of(context)!.emailValidateText), Colors.orange);
     }
@@ -73,7 +74,8 @@ class SignInState extends State<SignIn> {
     }
     if (!fieldsValidator.validatePassword(passwordFieldText) &&
         !result &&
-        !_onSignUpButtonPress) {
+        !_onSignUpButtonPress &&
+        loginPasswordController.text != '') {
       CustomSnackBar(
           context,
           Text(AppLocalizations.of(context)!.passwordValidateText),

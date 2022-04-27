@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stalker_app/pages/widgets/sign_in.dart';
 import 'package:stalker_app/pages/widgets/sign_up.dart';
 import 'package:stalker_app/utils/theme.dart';
-import 'package:stalker_app/utils/bubble_indicator_painter.dart';
+import 'package:stalker_app/pages/parts/bubble_indicator_painter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
@@ -179,7 +179,6 @@ class _LoginPageState extends State<LoginPage>
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
     signInState.onSignUpButtonPress = true;
-
     signUpState.onSignInButtonPress = false;
   }
 }
