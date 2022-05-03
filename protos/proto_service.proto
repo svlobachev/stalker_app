@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "proto_service";
+
+package proto_service;
+
+service Greeter {
+  rpc SayHello (RequestMessage) returns (ResponseMessage) {}
+}
+
+message RequestMessage {
+  string name = 1;
+}
+
+message ResponseMessage {
+  string message = 1;
+}

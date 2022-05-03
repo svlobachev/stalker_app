@@ -1,0 +1,34 @@
+= Regenerate the stubs
+
+If you have made changes to the message or service definition in
+`protos/helloworld.proto` and need to regenerate the corresponding Dart files,
+you will need to have protoc version 3.0.0 or higher and the Dart protoc plugin
+version 0.7.9 or higher on your PATH.
+
+To install protoc, see the instructions on
+https://developers.google.com/protocol-buffers/[the Protocol Buffers website].
+
+The easiest way to get the Dart protoc plugin is by running
+
+[source,sh]
+----
+$ pub global activate protoc_plugin
+----
+иногда помогает при ошибке:
+dart pub global activate fvm
+
+
+and follow the directions to add `~/.pub-cache/bin` to your PATH, if you haven't
+already done so.
+
+You can now regenerate the Dart files by running
+
+[source,sh]
+----
+$ protoc --dart_out=grpc:lib/grpc/generated -Iprotos protos/helloworld.proto
+----
+
+[source,sh]
+----
+$ protoc --dart_out=grpc:lib/grpc/generated -Iprotos protos/proto_service.proto
+----
