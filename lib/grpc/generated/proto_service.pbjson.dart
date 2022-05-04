@@ -12,19 +12,41 @@ import 'dart:typed_data' as $typed_data;
 const RequestMessage$json = const {
   '1': 'RequestMessage',
   '2': const [
-    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'name', '3': 1, '4': 3, '5': 11, '6': '.proto_service.RequestMessage.NameEntry', '10': 'name'},
   ],
+  '3': const [RequestMessage_NameEntry$json],
+};
+
+@$core.Deprecated('Use requestMessageDescriptor instead')
+const RequestMessage_NameEntry$json = const {
+  '1': 'NameEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `RequestMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List requestMessageDescriptor = $convert.base64Decode('Cg5SZXF1ZXN0TWVzc2FnZRISCgRuYW1lGAEgASgJUgRuYW1l');
+final $typed_data.Uint8List requestMessageDescriptor = $convert.base64Decode('Cg5SZXF1ZXN0TWVzc2FnZRI7CgRuYW1lGAEgAygLMicucHJvdG9fc2VydmljZS5SZXF1ZXN0TWVzc2FnZS5OYW1lRW50cnlSBG5hbWUaNwoJTmFtZUVudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIgASgJUgV2YWx1ZToCOAE=');
 @$core.Deprecated('Use responseMessageDescriptor instead')
 const ResponseMessage$json = const {
   '1': 'ResponseMessage',
   '2': const [
-    const {'1': 'message', '3': 1, '4': 1, '5': 9, '10': 'message'},
+    const {'1': 'message', '3': 1, '4': 3, '5': 11, '6': '.proto_service.ResponseMessage.MessageEntry', '10': 'message'},
   ],
+  '3': const [ResponseMessage_MessageEntry$json],
+};
+
+@$core.Deprecated('Use responseMessageDescriptor instead')
+const ResponseMessage_MessageEntry$json = const {
+  '1': 'MessageEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `ResponseMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List responseMessageDescriptor = $convert.base64Decode('Cg9SZXNwb25zZU1lc3NhZ2USGAoHbWVzc2FnZRgBIAEoCVIHbWVzc2FnZQ==');
+final $typed_data.Uint8List responseMessageDescriptor = $convert.base64Decode('Cg9SZXNwb25zZU1lc3NhZ2USRQoHbWVzc2FnZRgBIAMoCzIrLnByb3RvX3NlcnZpY2UuUmVzcG9uc2VNZXNzYWdlLk1lc3NhZ2VFbnRyeVIHbWVzc2FnZRo6CgxNZXNzYWdlRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4AQ==');

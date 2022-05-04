@@ -25,10 +25,5 @@ You can now regenerate the Dart files by running
 
 [source,sh]
 ----
-$ protoc --dart_out=grpc:lib/grpc/generated -Iprotos protos/helloworld.proto
-----
-
-[source,sh]
-----
 $ protoc --dart_out=grpc:lib/grpc/generated -Iprotos protos/proto_service.proto
 ----

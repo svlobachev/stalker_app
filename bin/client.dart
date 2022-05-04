@@ -1,4 +1,5 @@
 import 'package:grpc/grpc.dart';
+import 'package:stalker_app/grpc/generated/proto_service.pb.dart';
 import 'package:stalker_app/grpc/generated/proto_service.pbgrpc.dart';
 
 Future<void> main(List<String> args) async {
@@ -13,11 +14,15 @@ Future<void> main(List<String> args) async {
   );
   final stub = GreeterClient(channel);
 
-  final name = args.isNotEmpty ? args[0] : 'Sergei';
+  // final name = args.isNotEmpty ? args[0] : 'Sergei';
 
   try {
+    var names = <String, String>{};
+    names['first'] = 'partridge';
+    names['second'] = 'turtledoves';
+    names['fifth'] = 'golden rings';
     final response = await stub.sayHello(
-      RequestMessage()..name = name,
+      RequestMessage()..name.addAll(names),
       options: CallOptions(compression: const GzipCodec()),
     );
     print('Greeter client received: ${response.message}');

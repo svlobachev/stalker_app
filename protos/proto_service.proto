@@ -10,9 +10,11 @@ service Greeter {
 }
 
 message RequestMessage {
-  string name = 1;
+  //  string name = 1;
+  map<string, string> name = 1;
 }
 
 message ResponseMessage {
-  string message = 1;
+  //  string message = 1;
+  map<string, string> message = 1;
 }
