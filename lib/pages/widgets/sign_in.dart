@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stalker_app/grpc/service/gprc_client.dart';
 import 'package:stalker_app/utils/theme.dart';
 import 'package:stalker_app/pages/parts/snackbar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,6 +15,8 @@ class SignIn extends StatefulWidget {
 }
 
 class SignInState extends State<SignIn> {
+  var grpcClient = GRPCClient();
+
   TextEditingController loginEmailController = TextEditingController();
   TextEditingController loginPasswordController = TextEditingController();
   final FocusNode focusNodeEmail = FocusNode();
@@ -347,6 +350,7 @@ class SignInState extends State<SignIn> {
 
   void _toggleSignInButton() {
     CustomSnackBar(context, const Text('Login button pressed'), Colors.green);
+    grpcClient.grpcClientRun();
   }
 
   void _toggleLogin() {
